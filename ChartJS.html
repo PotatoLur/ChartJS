@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementação do Chart JS</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body style="display: flex; justify-content: space-around;">
+    <div>
+        <canvas id="myChartHorario" style="position: relative; height: 40vh; width: 40vw;"></canvas>
+    </div>
+    
+    <div>
+        <canvas id="myChartMes" style="position: relative; height: 40vh; width: 40vw;"></canvas>
+    </div>
+</body>
+
+<script>
+    const horario = document.getElementById('myChartHorario');  //Gráfico renderizado no elemento 'myChartHorario'
+    const mes = document.getElementById('myChartMes');  //Gráfico renderizado no elemento 'myChartMes'
+
+    new Chart(  //Cria um novo gráfico
+        horario,    //Os dados estão dentro da constante 'horario'
+        {
+        type: 'line',   //Tipo de gráfico
+        data: {    //Passando os dados dos gráficos
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'], // Eixo X
+            datasets: [{
+                label: 'Temperatura',      //Eixo Y
+                data: [30, 29, 28, 25, 22, 23],    //Dados do Eixo Y
+                backgroundColor: 'rgb(255, 0, 0)',
+                borderColor: 'rgb(255, 0, 0)',
+            },
+            {
+                label: 'Umidade',   //Outros dados no eixo Y
+                data: [80, 82, 80, 85, 80, 83],
+                backgroundColor: 'rgb(0, 0, 255)',
+                borderColor: 'rgb(0, 0, 255)',
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true   //Começa o eixo Y no 0
+                }
+            }
+        }
+    });
+
+    new Chart(
+        mes, 
+        {
+        type: 'bar',
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                label: 'Temperatura Média',
+                data: [22, 24, 27, 23, 20, 18],
+                backgroundColor: 'rgb(255, 0, 0)',
+            },
+            {
+                label: 'Umidade Média',
+                data: [90, 89, 93, 87, 88, 82],
+                backgroundColor: 'rgb(0, 0, 255)',
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true   //Começa o eixo Y no 0
+                }
+            }
+        }
+    });
+</script>
+
+
+
+</html>
